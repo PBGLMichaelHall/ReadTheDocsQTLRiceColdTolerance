@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QTL_Rice_Cold_Tolerance &mdash; QTLRiceColdTolerance 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> QTLRiceColdTolerance
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">QTL_Rice_Cold_Tolerance</a><ul>
+<li><a class="reference internal" href="#id1">QTL-Rice-Cold-Tolerance</a><ul>
+<li><a class="reference internal" href="#for-more-detailed-instructions-please-read-the-vignettehere"><strong>For more detailed instructions please read the vignette</strong>here</a></li>
+<li><a class="reference internal" href="#for-updates-read-the-news-md">For updates read the NEWS.md</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples">Examples:</a></li>
+<li><a class="reference internal" href="#load-install-libraries">Load/install libraries</a></li>
+<li><a class="reference internal" href="#vcf-file-must-only-contain-bialleleic-variants-filter-upstream-e-g-with-bcftools-view-m2-m2-also-the-qtlseqr-functions-will-only-take-snps-ie-length-of-ref-and-alt-1">Vcf file must only contain bialleleic variants. (filter upstream, e.g., with bcftools view -m2 -M2), also the QTLseqR functions will only take SNPS, ie, length of REF and ALT== 1</a></li>
+<li><a class="reference internal" href="#call-the-parser">Call the Parser</a></li>
+<li><a class="reference internal" href="#invoke-unique-command-to-extract-sample-names-reverse-comapatible-to-the-vcf">Invoke unique command to extract Sample names reverse comapatible to the VCF</a></li>
+<li><a class="reference internal" href="#g-distribution-plot">G’ Distribution Plot</a></li>
+<li><a class="reference internal" href="#plot-g-statistic-distribution">Plot G Statistic Distribution</a></li>
+<li><a class="reference internal" href="#use-rmvp-package-to-view-snps-on-chromosomes-contigs">Use RMVP package to view SNPs on chromosomes/contigs</a></li>
+<li><a class="reference internal" href="#export-summary-csv">Export summary CSV</a></li>
+<li><a class="reference internal" href="#preview-the-summary-qtl">Preview the Summary QTL</a></li>
+<li><a class="reference internal" href="#p2-p1-qtl-is-present">p2 &gt;&gt; p1 QTL is present</a></li>
+<li><a class="reference internal" href="#however-ns-c-1-is-true">However, ns &gt;&gt; C &gt;&gt; 1 is TRUE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">QTLRiceColdTolerance</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>QTL_Rice_Cold_Tolerance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qtl-rice-cold-tolerance">
+<h1>QTL_Rice_Cold_Tolerance</h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Michael Hall</p>
+</dd>
+<dt class="field-even">Date</dt>
+<dd class="field-even"><p>4/13/2022</p>
+</dd>
+</dl>
+<section id="id1">
+<h2>QTL-Rice-Cold-Tolerance</h2>
+<p>QTLseqr is an R package for QTL mapping using NGS Bulk Segregant
+Analysis.</p>
+<p>QTLseqr is still under development and is offered with out any
+guarantee.</p>
+<section id="for-more-detailed-instructions-please-read-the-vignettehere">
+<h3><strong>For more detailed instructions please read the vignette</strong><a class="reference external" href="https://github.com/bmansfeld/QTLseqr/raw/master/vignettes/QTLseqr.pdf">here</a></h3>
+</section>
+<section id="for-updates-read-the-news-md">
+<h3>For updates read the <a class="reference external" href="https://github.com/bmansfeld/QTLseqr/blob/master/NEWS.md">NEWS.md</a></h3>
+</section>
+</section>
+<section id="installation">
+<h2>Installation</h2>
+<!-- You can install and update QTLseqr by using our [drat](http://dirk.eddelbuettel.com/code/drat.html) repository hosted on our github page: --><!-- ```{r drat-install, eval = FALSE} --><!-- install.packages("QTLseqr", repos = "http://bmansfeld.github.io/drat") --><!-- ``` --><!-- OR You can install QTLseqr from github with: --><p>You can install QTLseqr from github with:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install devtools first to download packages from github</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">)</span>
+
+<span class="c1"># use devtools to install QTLseqr</span>
+<span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;PBGLMichaelHall/QTLseqr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Apart from regular package dependencies, there are some
+Bioconductor tools that we use as well, as such you will be prompted to
+install support for Bioconductor, if you haven’t already. QTLseqr makes
+use of C++ to make some tasks significantly faster (like counting SNPs).
+Because of this, in order to install QTLseqr from github you will be
+required to install some compiling tools (Rtools and Xcode, for Windows
+and Mac, respectively).</p>
+<p><strong>If you use QTLseqr in published research, please cite:</strong></p>
+<blockquote>
+<div><p>Mansfeld B.N. and Grumet R, QTLseqr: An R package for bulk segregant
+analysis with next-generation sequencing <em>The Plant Genome</em>
+<a class="reference external" href="https://dl.sciencesocieties.org/publications/tpg/abstracts/11/2/180006">doi:10.3835/plantgenome2018.01.0006</a></p>
+</div></blockquote>
+<p>We also recommend citing the paper for the corresponding method you work
+with.</p>
+<p>QTL-seq method:</p>
+<blockquote>
+<div><p>Takagi, H., Abe, A., Yoshida, K., Kosugi, S., Natsume, S., Mitsuoka,
+C., Uemura, A., Utsushi, H., Tamiru, M., Takuno, S., Innan, H., Cano,
+L. M., Kamoun, S. and Terauchi, R. (2013), QTL-seq: rapid mapping of
+quantitative trait loci in rice by whole genome resequencing of DNA
+from two bulked populations. <em>Plant J</em>, 74: 174–183.
+<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/tpj.12105">doi:10.1111/tpj.12105</a></p>
+</div></blockquote>
+<p>G prime method:</p>
+<blockquote>
+<div><p>Magwene PM, Willis JH, Kelly JK (2011) The Statistics of Bulk
+Segregant Analysis Using Next Generation Sequencing. <em>PLOS
+Computational Biology</em> 7(11): e1002255.
+<a class="reference external" href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002255">doi.org/10.1371/journal.pcbi.1002255</a></p>
+</div></blockquote>
+<section id="abstract">
+<h3>Abstract</h3>
+<p>Next Generation Sequencing Bulk Segregant Analysis (NGS-BSA) is
+efficient in detecting quantitative trait loci (QTL). Despite the
+popularity of NGS-BSA and the R statistical platform, no R packages are
+currently available for NGS-BSA. We present QTLseqr, an R package for
+NGS-BSA that identifies QTL using two statistical approaches: QTL-seq
+and G’. These approaches use a simulation method and a tricube smoothed
+G statistic, respectively, to identify and assess statistical
+significance of QTL. QTLseqr, can import and filter SNP data, calculate
+SNP distributions, relative allele frequencies, G’ values, and
+log10(p-values), enabling identification and plotting of QTL.</p>
+</section>
+</section>
+<section id="examples">
+<h2>Examples:</h2>
+</section>
+<section id="load-install-libraries">
+<h2>Load/install libraries</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span>“<span class="n">tinytex</span>”<span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span>“<span class="n">vcfR</span>”<span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span>“<span class="n">tidyr</span>”<span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span>“<span class="n">ggplot2</span>”<span class="p">)</span>
+<span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span>“<span class="n">PBGLMichaelHall</span><span class="o">/</span><span class="n">QTLseqr</span>”<span class="p">,</span><span class="n">force</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">QTLseqr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tinytex</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">vcfR</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the Working Directory to where VCF file is stored in file system</span>
+</pre></div>
+</div>
+<p>setwd(“/home/michael/Desktop/RiceCold2”)</p>
+</section>
+<section id="vcf-file-must-only-contain-bialleleic-variants-filter-upstream-e-g-with-bcftools-view-m2-m2-also-the-qtlseqr-functions-will-only-take-snps-ie-length-of-ref-and-alt-1">
+<h2>Vcf file must only contain bialleleic variants. (filter upstream, e.g., with bcftools view -m2 -M2), also the QTLseqR functions will only take SNPS, ie, length of REF and ALT== 1</h2>
+<p>vcf &lt;- read.vcfR(file = “wGQ-Filt-freebayes~bwa~IRGSP-1.0~both-segregant_bulks~filtered-default.vcf.gz”</p>
+<figure class="align-default">
+<img alt="" src="_images/1.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Convert to tidy data frame</span>
+<span class="n">VCF_TIDY</span> <span class="o">&lt;-</span> <span class="nf">vcfR2tidy</span><span class="p">(</span><span class="n">vcf</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="call-the-parser">
+<h2>Call the Parser</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">QTLParser_1_MH</span><span class="p">(</span><span class="n">vcf</span> <span class="o">=</span> <span class="n">VCF_TIDY</span><span class="p">,</span> <span class="n">HighBulk</span> <span class="o">=</span> <span class="s">&quot;D2_F2_tt&quot;</span><span class="p">,</span><span class="n">LowBulk</span> <span class="o">=</span> <span class="s">&quot;D2_F2_TT&quot;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">Hall</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/3.png" />
+</figure>
+</section>
+<section id="invoke-unique-command-to-extract-sample-names-reverse-comapatible-to-the-vcf">
+<h2>Invoke unique command to extract Sample names reverse comapatible to the VCF</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">unique</span><span class="p">(</span><span class="n">VCF_TIDY</span><span class="o">$</span><span class="n">gt</span><span class="o">$</span><span class="n">Indiv</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set High bulk and Low bulk sample names and parser generated file name</span>
+<span class="c1">#The file name is generated from the QTLParser_1_MH function in line 119</span>
+
+<span class="n">HighBulk</span> <span class="o">&lt;-</span> <span class="s">&quot;ET-pool-385&quot;</span>
+<span class="n">LowBulk</span> <span class="o">&lt;-</span> <span class="s">&quot;ES-pool-430&quot;</span>
+<span class="n">file</span> <span class="o">&lt;-</span> <span class="s">&quot;Hall.csv&quot;</span>
+
+<span class="c1">#Choose which chromosomes/contigs will be included in the analysis,</span>
+
+<span class="n">Chroms</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;NC_029256.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029257.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029258.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029259.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029260.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029261.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029262.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029263.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029264.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029265.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029266.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029267.1&quot;</span><span class="p">)</span>
+
+
+<span class="n">df</span> <span class="o">&lt;-</span>
+  <span class="nf">importFromTable</span><span class="p">(</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">file</span><span class="p">,</span>
+    <span class="n">highBulk</span> <span class="o">=</span> <span class="n">HighBulk</span><span class="p">,</span>
+    <span class="n">lowBulk</span> <span class="o">=</span> <span class="n">LowBulk</span><span class="p">,</span>
+    <span class="n">chromList</span> <span class="o">=</span> <span class="n">Chroms</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>#plot histograms associated with filtering arguments such as mamximum and minumum Total Depths and reference Allele Frequency to determine cut off     values</dt><dd><p>ggplot(data =df) + geom_histogram(aes(x = DP.LOW + DP.HIGH)) + xlim(0,400)
+ggsave(filename = “Depth_Histogram.png”,plot=last_plot())</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="" src="_images/8.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">REF_FRQ</span><span class="p">))</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;Ref_Freq_Histogram.png&quot;</span><span class="p">,</span><span class="n">plot</span> <span class="o">=</span> <span class="nf">last_plot</span><span class="p">())</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/9.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Filter SNPs based on some criteria</span>
+<span class="n">df_filt</span> <span class="o">&lt;-</span> <span class="nf">filterSNPs</span><span class="p">(</span> <span class="n">SNPset</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span>
+<span class="n">refAlleleFreq</span> <span class="o">=</span> <span class="m">0.20</span><span class="p">,</span> <span class="n">minTotalDepth</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">maxTotalDepth</span> <span class="o">=</span> <span class="m">400</span><span class="p">,</span>
+<span class="n">minSampleDepth</span> <span class="o">=</span> <span class="m">40</span><span class="p">,</span>
+<span class="c1"># minGQ = 0 )</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/10.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run G&#39; analysis</span>
+<span class="n">df_filt</span><span class="o">&lt;-</span><span class="nf">runGprimeAnalysis_MH</span><span class="p">(</span>
+  <span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span>
+  <span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e6</span><span class="p">,</span>
+  <span class="n">outlierFilter</span> <span class="o">=</span> <span class="s">&quot;deltaSNP&quot;</span><span class="p">,</span>
+  <span class="n">filterThreshold</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/11.png" />
+</figure>
+</section>
+<section id="g-distribution-plot">
+<h2>G’ Distribution Plot</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#The plot reveals a skewed G Prime statistic with a really small variance. Perhaps it is due to the small number of variants called.</span>
+<span class="c1">#In addition, Hampels outlier filter in the second argument, can also be changed to &quot;deltaSNP&quot;</span>
+
+<span class="nf">plotGprimeDist</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">outlierFilter</span> <span class="o">=</span> <span class="s">&quot;Hampel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/12.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#We can see raw data before and after our filtering step</span>
+
+<span class="nf">plotGprimeDist_MH</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">outlierFilter</span> <span class="o">=</span> <span class="s">&quot;deltaSNP&quot;</span><span class="p">,</span><span class="n">filterThreshold</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/13.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run QTLseq analysis</span>
+<span class="n">df_filt2</span> <span class="o">&lt;-</span> <span class="nf">runQTLseqAnalysis_MH</span><span class="p">(</span>
+  <span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span>
+  <span class="n">windowSize</span> <span class="o">=</span> <span class="m">1e6</span><span class="p">,</span>
+  <span class="n">popStruc</span> <span class="o">=</span> <span class="s">&quot;F2&quot;</span><span class="p">,</span>
+  <span class="n">bulkSize</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">430</span><span class="p">,</span> <span class="m">385</span><span class="p">),</span>
+  <span class="n">replications</span> <span class="o">=</span> <span class="m">10000</span><span class="p">,</span>
+  <span class="n">intervals</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">95</span><span class="p">,</span> <span class="m">99</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/14.png" />
+</figure>
+</section>
+<section id="plot-g-statistic-distribution">
+<h2>Plot G Statistic Distribution</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">df_filt2</span><span class="o">$</span><span class="n">G</span><span class="p">,</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">950</span><span class="p">,</span><span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">),</span><span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;G Distribution&quot;</span><span class="p">,</span><span class="n">main</span> <span class="o">=</span> <span class="s">&quot;Histogram of G Values&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/15.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot Snps as a function of chromosome and position values</span>
+
+<span class="nf">plotQTLStats</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt2</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="s">&quot;nSNPs&quot;</span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;nSNPs.png&quot;</span><span class="p">,</span><span class="n">plot</span> <span class="o">=</span> <span class="nf">last_plot</span><span class="p">())</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/16.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using QTLStats funciton plot Gprime Statistic with False Discovery Rate Threhshold as a third argument boolean operator as TRUE. The q value is used as FDR threshold null value is 0.05%.</span>
+
+<span class="nf">plotQTLStats</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="s">&quot;Gprime&quot;</span><span class="p">,</span> <span class="n">plotThreshold</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="m">0.01</span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;GPrime.png&quot;</span><span class="p">,</span><span class="n">plot</span> <span class="o">=</span> <span class="nf">last_plot</span><span class="p">())</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/17.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Again using plotQTLStats change second argument varaible to deltaSNP and plot.</span>
+
+<span class="nf">plotQTLStats</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt2</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="s">&quot;deltaSNP&quot;</span><span class="p">,</span> <span class="n">plotIntervals</span>  <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;DeltaSNPInterval.png&quot;</span><span class="p">,</span><span class="n">plot</span> <span class="o">=</span> <span class="nf">last_plot</span><span class="p">())</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/18.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Finally with plotQTLStats plot negLog10Pval</span>
+
+<span class="nf">plotQTLStats</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="s">&quot;negLog10Pval&quot;</span><span class="p">,</span><span class="n">plotThreshold</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="m">0.15</span><span class="p">)</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;negLog10Pval.png&quot;</span><span class="p">,</span><span class="n">plot</span> <span class="o">=</span> <span class="nf">last_plot</span><span class="p">())</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/19.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Add subset argument to focus on particular chromosomes one, three, four, and six.</span>
+<span class="c1">#The reason is due to signficant QTL regions</span>
+<span class="nf">plotQTLStats</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="s">&quot;Gprime&quot;</span><span class="p">,</span><span class="n">plotThreshold</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="n">subset</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;NC_029256.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029258.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029259.1&quot;</span><span class="p">,</span><span class="s">&quot;NC_029261.1&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/20.png" />
+</figure>
+</section>
+<section id="use-rmvp-package-to-view-snps-on-chromosomes-contigs">
+<h2>Use RMVP package to view SNPs on chromosomes/contigs</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;rMVP&quot;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rMVP</span><span class="p">)</span>
+<span class="n">sample</span><span class="o">&lt;-</span><span class="s">&quot;Semi_Dwarfism_in_Sorghum&quot;</span>
+<span class="n">pathtosample</span> <span class="o">&lt;-</span> <span class="s">&quot;/home/michael/Desktop/QTLseqr/extdata/subset_freebayes_D2.filtered.vcf.gz&quot;</span>
+<span class="n">out</span><span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;mvp.&quot;</span><span class="p">,</span><span class="n">sample</span><span class="p">,</span><span class="s">&quot;.vcf&quot;</span><span class="p">)</span>
+<span class="n">memo</span><span class="o">&lt;-</span><span class="nf">paste0</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">dffile</span><span class="o">&lt;-</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;mvp.&quot;</span><span class="p">,</span><span class="n">sample</span><span class="p">,</span><span class="s">&quot;.vcf.geno.map&quot;</span><span class="p">)</span>
+
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Making MVP data S1&quot;</span><span class="p">)</span>
+<span class="nf">MVP.Data</span><span class="p">(</span><span class="n">fileVCF</span><span class="o">=</span><span class="n">pathtosample</span><span class="p">,</span>
+      <span class="c1">#filePhe=&quot;Phenotype.txt&quot;,</span>
+      <span class="n">fileKin</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+      <span class="n">filePC</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span>
+      <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Reading MVP Data S1&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="n">dffile</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">message</span><span class="p">(</span><span class="s">&quot;Making SNP Density Plots&quot;</span><span class="p">)</span>
+<span class="nf">MVP.Report.Density</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)],</span> <span class="n">bin.size</span> <span class="o">=</span> <span class="m">1000000</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;yellow&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">),</span> <span class="n">memo</span> <span class="o">=</span> <span class="n">memo</span><span class="p">,</span> <span class="n">file.type</span> <span class="o">=</span> <span class="s">&quot;jpg&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="m">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/21.png" />
+</figure>
+</section>
+<section id="export-summary-csv">
+<h2>Export summary CSV</h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">QTLTable</span><span class="p">(</span><span class="n">SNPset</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.01</span><span class="p">,</span> <span class="n">export</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s">&quot;my_BSA_QTL.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="preview-the-summary-qtl">
+<h2>Preview the Summary QTL</h2>
+<figure class="align-default">
+<img alt="" src="_images/22.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use the function to plot allele frequencies per chromosome</span>
+<span class="c1">#Second argument size specifes size of scalar factor on nSNPs and if you have a relatively small SNP set .001 is a good startin point otherwise set to 1</span>
+<span class="nf">Obs_Allele_Freq</span><span class="p">(</span><span class="n">SNPSet</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/23.png" />
+</figure>
+<figure class="align-default">
+<img alt="" src="_images/233.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">##Use the function to investigate chromosomal region of interest</span>
+<span class="nf">Obs_Allele_Freq2</span><span class="p">(</span><span class="n">SNPSet</span> <span class="o">=</span> <span class="n">df_filt</span><span class="p">,</span> <span class="n">ChromosomeValue</span> <span class="o">=</span> <span class="s">&quot;Chr04&quot;</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">.</span><span class="m">90</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="../images/24.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/home/michael/Desktop/QTLseqr/extdata&quot;</span><span class="p">)</span>
+<span class="c1"># Theory and Analytical Framework of Sampling from BSA</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="c1"># Define Ranges of Success</span>
+<span class="c1"># Sample Size from High Bulk sn = 385</span>
+<span class="n">success</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">770</span>
+<span class="c1"># The Difference between realized and Expected Frequencies</span>
+<span class="c1"># ns : Sample Size taken from Low Bulk</span>
+<span class="c1"># 2(ns)p1_star ~ Binomial(2(ns),p1)</span>
+<span class="c1"># p1 Expected Frequencies</span>
+<span class="c1"># Expected Frequencies:</span>
+<span class="c1"># E(n1) = E(n2) = E(n3) = E(n4) = C/2 = 110</span>
+<span class="c1"># We prefer for accuracy to have ns &gt;&gt; C &gt;&gt; 1</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">770</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">.</span><span class="m">50</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Binomial Sampling from Diploid Orgainism from High Bulk&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;2(ns)(p1_STAR)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Density&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/25.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># ns : Sample Size from High Bulk</span>
+<span class="c1"># 2(ns)p2_star ~ Binomial(2(ns),p2)</span>
+<span class="c1"># p2 Expected Frequencies</span>
+<span class="n">success</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">860</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">860</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;h&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Binomial Sampling from Diploid Organism from Low Bulk&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;2(n2)(p2_STAR)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Density&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/26.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="c1">#Define Ranges of Success (Allele Frequencies High and Low)</span>
+<span class="n">success</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">100</span>
+<span class="c1">#n1|p1_star ~ Poisson(lambda)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dpois</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">p1_STAR</span><span class="p">)),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;h&#39;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;n1|p1_STAR ~ Poisson(C[1-p1_STAR])&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;n1|(n3/n1+n3)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Prob&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/27.png" />
+</figure>
+<p># Filter outliers
+TT &lt;- TT %&gt;% filter(AD_REF. &lt;= 500)</p>
+<p>hist(TT$AD_REF., probability = FALSE,main=”Histogram of Actually Realized n1 Values”,xlab=”n1”,breaks = “Sturges”)</p>
+<figure class="align-default">
+<img alt="" src="_images/28.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#n2|p2_star ~ Poisson(lambda)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dpois</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">p2_STAR</span><span class="p">)),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;n2|p2_STAR ~ Poisson(C[[1-p2_STAR])&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;n2|(n4/n2+n4)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Prob&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/29.png" />
+</figure>
+<p>tt &lt;- tt %&gt;% filter(AD_REF. &lt;= 500)
+hist(tt$AD_REF., probability = TRUE, main = “Histogram of Actually Realized n2 Values”,xlab=”n2”)</p>
+<figure class="align-default">
+<img alt="" src="_images/30.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#n3|p1_star ~ Poisson(lambda)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dpois</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="n">p1_STAR</span><span class="p">),</span><span class="n">type</span><span class="o">=</span><span class="s">&#39;h&#39;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;n3|p1_STAR ~ Poisson(C[1-p1_STAR])&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;n3|(n3/n1+n3)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Prob&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/31.png" />
+</figure>
+<p>TT &lt;- TT %&gt;% filter(AD_ALT. &lt;= 300)
+hist(TT$AD_ALT., probability = TRUE, main=”Histogram of Acutally Realized n3 Values”,xlab=”n3”)</p>
+<figure class="align-default">
+<img alt="" src="_images/32.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#n4|p2_star ~ Poisson(lambda)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="nf">dpois</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="n">p2_STAR</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#39;h&#39;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;n4|p2_STAR ~ Poisson(C[1-p2_STAR])&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;n4|n4/(n2+n4)&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Prob&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/33.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">tt</span><span class="o">$</span><span class="n">AD_ALT.</span><span class="p">,</span> <span class="n">probability</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Histogram of Acutally Realized n4 Values&quot;</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;n4&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="" src="_images/34.png" />
+</figure>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Assuming average sequencing coverage (C) expected values for n1,n2,n3,n4</span>
+<span class="nf">E</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">=</span> <span class="nf">E</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">=</span> <span class="nf">E</span><span class="p">(</span><span class="n">n3</span><span class="p">)</span> <span class="o">=</span> <span class="nf">E</span><span class="p">(</span><span class="n">n4</span><span class="p">)</span> <span class="o">=</span> <span class="n">C</span><span class="o">/</span><span class="m">2</span> <span class="o">=</span> <span class="m">35</span>
+</pre></div>
+</div>
+<p># Read in the csv file from High bulk tt
+tt&lt;-read.table(file = “ET-pool-385.csv”,header = TRUE,sep = “,”)
+# Calculate average Coverage per SNP site
+mean(tt$DP)
+# Find REalized frequencies
+p1_STAR &lt;- sum(tt$AD_ALT.) / sum(tt$DP)</p>
+<p># Read in the csv file from Low Bulk TT
+TT&lt;-read.table(file =”ES-pool-430.csv”,header = TRUE,sep=”,”)
+# Calculate average Coverage per SNP sit
+mean(TT$DP)
+# Find Realized frequencies
+p2_STAR &lt;- sum(TT$AD_ALT.) / sum(TT$DP)
+# Take the average of the Averages
+C &lt;-(mean(tt$DP)+mean(TT$DP))/2
+C&lt;-round(C,0)
+#Average Coverage
+70
+C/2 = 35</p>
+</section>
+<section id="p2-p1-qtl-is-present">
+<h2>p2 &gt;&gt; p1 QTL is present</h2>
+</section>
+<section id="however-ns-c-1-is-true">
+<h2>However, ns &gt;&gt; C &gt;&gt; 1 is TRUE</h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Michael Hall.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
